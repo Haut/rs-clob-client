@@ -79,6 +79,9 @@ pub struct CancelMarketOrderRequest {
 #[builder(on(String, into))]
 pub struct TradesRequest {
     pub id: Option<String>,
+    #[serde(rename = "taker")]
+    pub taker_address: Option<Address>,
+    #[serde(rename = "maker")]
     pub maker_address: Option<Address>,
     pub market: Option<String>,
     pub asset_id: Option<String>,
@@ -146,11 +149,11 @@ mod tests {
 
         assert_eq!(
             request.query_params(None),
-            "?id=aa-bb&maker_address=0x0000000000000000000000000000000000000000&market=10000&asset_id=100"
+            "?id=aa-bb&maker=0x0000000000000000000000000000000000000000&market=10000&asset_id=100"
         );
         assert_eq!(
             request.query_params(Some("1")),
-            "?id=aa-bb&maker_address=0x0000000000000000000000000000000000000000&market=10000&asset_id=100&next_cursor=1"
+            "?id=aa-bb&maker=0x0000000000000000000000000000000000000000&market=10000&asset_id=100&next_cursor=1"
         );
     }
 
