@@ -988,8 +988,15 @@ impl<K: Kind> Client<Authenticated<K>> {
         })
     }
 
-    pub async fn post_order(&self, order: SignedOrder) -> Result<Vec<PostOrderResponse>> {
-        self.post_orders(vec![order]).await
+    pub async fn post_order(&self, order: SignedOrder) -> Result<PostOrderResponse> {
+        let request = self
+            .client()
+            .request(Method::POST, format!("{}order", self.host()))
+            .json(&order)
+            .build()?;
+        let headers = self.create_headers(&request).await?;
+
+        crate::request(&self.inner.client, request, Some(headers)).await
     }
 
     pub async fn post_orders(&self, orders: Vec<SignedOrder>) -> Result<Vec<PostOrderResponse>> {
