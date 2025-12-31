@@ -1429,7 +1429,7 @@ mod authenticated {
             "outcome": "YES",
             "created_at": 1_705_322_096,
             "expiration": "1705708800",
-            "order_type": "gtd"
+            "type": "gtd"
         });
 
         let mock = server.mock(|when, then| {
@@ -1492,7 +1492,7 @@ mod authenticated {
                     "outcome": "YES",
                     "created_at": 1_705_322_096,
                     "expiration": "1705708800",
-                    "order_type": "GTC"
+                    "type": "GTC"
                 }
             ],
             "limit": 1,
@@ -1506,7 +1506,7 @@ mod authenticated {
                 .header(POLY_ADDRESS, client.address().to_string().to_lowercase())
                 .header(POLY_API_KEY, API_KEY)
                 .header(POLY_PASSPHRASE, PASSPHRASE)
-                .query_param("order_id", "1");
+                .query_param("id", "1");
             then.status(StatusCode::OK).json_body(json);
         });
 
