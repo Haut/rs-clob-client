@@ -9,7 +9,7 @@ use chrono::NaiveDate;
 use serde::Serialize;
 use serde_with::{StringWithSeparator, formats::CommaSeparator, serde_as};
 
-use crate::clob::types::{AssetType, Side, SignatureType};
+use crate::clob::types::{AssetType, Interval, Side, SignatureType};
 
 #[non_exhaustive]
 #[derive(Debug, Serialize, Builder)]
@@ -47,6 +47,21 @@ pub struct OrderBookSummaryRequest {
 #[builder(on(String, into))]
 pub struct LastTradePriceRequest {
     pub token_id: String,
+}
+
+#[non_exhaustive]
+#[derive(Debug, Serialize, Builder)]
+#[builder(on(String, into))]
+pub struct PriceHistoryRequest {
+    pub market: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub start_ts: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub end_ts: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub interval: Option<Interval>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fidelity: Option<u32>,
 }
 
 #[non_exhaustive]

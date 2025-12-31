@@ -23,8 +23,9 @@ use crate::auth::{Credentials, Kind, Normal};
 use crate::clob::order_builder::{Limit, Market, OrderBuilder, generate_seed};
 use crate::clob::types::request::{
     BalanceAllowanceRequest, CancelMarketOrderRequest, DeleteNotificationsRequest,
-    LastTradePriceRequest, MidpointRequest, OrderBookSummaryRequest, OrdersRequest, PriceRequest,
-    SpreadRequest, TradesRequest, UpdateBalanceAllowanceRequest, UserRewardsEarningRequest,
+    LastTradePriceRequest, MidpointRequest, OrderBookSummaryRequest, OrdersRequest,
+    PriceHistoryRequest, PriceRequest, SpreadRequest, TradesRequest, UpdateBalanceAllowanceRequest,
+    UserRewardsEarningRequest,
 };
 use crate::clob::types::response::{
     ApiKeysResponse, BalanceAllowanceResponse, BanStatusResponse, BuilderApiKeyResponse,
@@ -32,9 +33,9 @@ use crate::clob::types::response::{
     GeoblockResponse, LastTradePriceResponse, LastTradesPricesResponse, MarketResponse,
     MarketRewardResponse, MidpointResponse, MidpointsResponse, NegRiskResponse,
     NotificationResponse, OpenOrderResponse, OrderBookSummaryResponse, OrderScoringResponse,
-    OrdersScoringResponse, Page, PostOrderResponse, PriceResponse, PricesResponse,
-    RewardsPercentagesResponse, SimplifiedMarketResponse, SpreadResponse, SpreadsResponse,
-    TickSizeResponse, TotalUserEarningResponse, TradeResponse, UserEarningResponse,
+    OrdersScoringResponse, Page, PostOrderResponse, PriceHistoryResponse, PriceResponse,
+    PricesResponse, RewardsPercentagesResponse, SimplifiedMarketResponse, SpreadResponse,
+    SpreadsResponse, TickSizeResponse, TotalUserEarningResponse, TradeResponse, UserEarningResponse,
     UserRewardsEarningResponse,
 };
 use crate::clob::types::{SignableOrder, SignatureType, SignedOrder, TickSize};
@@ -432,6 +433,31 @@ impl<S: State> Client<S> {
             .build()?;
 
         crate::request(&self.inner.client, request, None).await
+    }
+
+    pub async fn price_history(
+        &self,
+        request: &PriceHistoryRequest,
+    ) -> Result<PriceHistoryResponse> {
+        let mut req = self
+            .client()
+            .request(Method::GET, format!("{}prices-history", self.host()))
+            .query(&[("market", request.market.as_str())]);
+
+        if let Some(start_ts) = request.start_ts {
+            req = req.query(&[("startTs", start_ts)]);
+        }
+        if let Some(end_ts) = request.end_ts {
+            req = req.query(&[("endTs", end_ts)]);
+        }
+        if let Some(interval) = &request.interval {
+            req = req.query(&[("interval", interval.to_string())]);
+        }
+        if let Some(fidelity) = request.fidelity {
+            req = req.query(&[("fidelity", fidelity)]);
+        }
+
+        crate::request(&self.inner.client, req.build()?, None).await
     }
 
     pub async fn spread(&self, request: &SpreadRequest) -> Result<SpreadResponse> {
