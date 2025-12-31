@@ -31,6 +31,8 @@ pub struct PriceRequest {
 #[builder(on(String, into))]
 pub struct SpreadRequest {
     pub token_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub side: Option<Side>,
 }
 
 #[non_exhaustive]
