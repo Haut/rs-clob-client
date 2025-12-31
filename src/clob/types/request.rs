@@ -90,6 +90,7 @@ pub struct TradesRequest {
 #[derive(Debug, Default, Serialize, Builder)]
 #[builder(on(String, into))]
 pub struct OrdersRequest {
+    #[serde(rename = "id")]
     pub order_id: Option<String>,
     pub market: Option<String>,
     pub asset_id: Option<String>,
@@ -163,11 +164,11 @@ mod tests {
 
         assert_eq!(
             request.query_params(None),
-            "?order_id=aa-bb&market=10000&asset_id=100"
+            "?id=aa-bb&market=10000&asset_id=100"
         );
         assert_eq!(
             request.query_params(Some("1")),
-            "?order_id=aa-bb&market=10000&asset_id=100&next_cursor=1"
+            "?id=aa-bb&market=10000&asset_id=100&next_cursor=1"
         );
     }
 
