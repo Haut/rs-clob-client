@@ -38,6 +38,8 @@ pub struct SpreadRequest {
 #[builder(on(String, into))]
 pub struct OrderBookSummaryRequest {
     pub token_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub side: Option<Side>,
 }
 
 #[non_exhaustive]
