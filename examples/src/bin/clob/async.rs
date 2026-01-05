@@ -2,8 +2,7 @@
 
 use std::str::FromStr as _;
 
-use alloy::signers::Signer as _;
-use alloy::signers::local::LocalSigner;
+use polymarket_client_sdk::auth::{LocalSigner, Signer as _};
 use polymarket_client_sdk::clob::{Client, Config};
 use polymarket_client_sdk::{POLYGON, PRIVATE_KEY_VAR};
 use tokio::join;

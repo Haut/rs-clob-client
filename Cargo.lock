@@ -2009,16 +2009,13 @@ dependencies = [
  "anyhow",
  "aws-config",
  "aws-sdk-kms",
- "chrono",
  "futures",
  "futures-util",
  "polymarket-client-sdk",
  "rust_decimal",
- "rust_decimal_macros",
  "tokio",
  "tracing",
  "tracing-subscriber",
- "uuid",
 ]
 
 [[package]]

@@ -5,10 +5,9 @@
 use std::str::FromStr as _;
 
 use futures::StreamExt as _;
-use polymarket_client_sdk::auth::Credentials;
+use polymarket_client_sdk::auth::{Credentials, Uuid};
 use polymarket_client_sdk::clob::ws::{Client, WsMessage};
 use polymarket_client_sdk::types::Address;
-use uuid::Uuid;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {

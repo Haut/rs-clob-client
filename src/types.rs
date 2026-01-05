@@ -8,7 +8,8 @@
 /// [`Signature`] represents cryptographic signatures for signed orders.
 pub use alloy::primitives::{Address, ChainId, Signature, address};
 /// Date and time types for timestamps in API responses and order expiration.
-pub use chrono::{DateTime, NaiveDate, Utc};
+/// [`TimeDelta`] is useful for calculating expiration times relative to now.
+pub use chrono::{DateTime, NaiveDate, TimeDelta, Utc};
 /// Arbitrary precision decimal type for prices, sizes, and amounts.
 pub use rust_decimal::Decimal;
 /// Macro for creating [`Decimal`] literals at compile time.

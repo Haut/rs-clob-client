@@ -1,9 +1,9 @@
 #![allow(clippy::print_stdout, reason = "Examples are okay to print to stdout")]
 
-use alloy::signers::Signer as _;
 use alloy::signers::aws::AwsSigner;
 use aws_config::BehaviorVersion;
 use polymarket_client_sdk::POLYGON;
+use polymarket_client_sdk::auth::Signer as _;
 use polymarket_client_sdk::clob::{Client, Config};
 
 #[tokio::main]

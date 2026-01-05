@@ -2,18 +2,15 @@
 
 use std::str::FromStr as _;
 
-use alloy::signers::Signer as _;
-use alloy::signers::local::LocalSigner;
-use chrono::{TimeDelta, Utc};
+use polymarket_client_sdk::auth::{LocalSigner, Signer as _};
 use polymarket_client_sdk::clob::types::request::{
     BalanceAllowanceRequest, OrdersRequest, TradesRequest, UpdateBalanceAllowanceRequest,
     UserRewardsEarningRequest,
 };
 use polymarket_client_sdk::clob::types::{Amount, OrderType, Side};
 use polymarket_client_sdk::clob::{Client, Config};
-use polymarket_client_sdk::types::Decimal;
+use polymarket_client_sdk::types::{Decimal, TimeDelta, Utc, dec};
 use polymarket_client_sdk::{POLYGON, PRIVATE_KEY_VAR};
-use rust_decimal_macros::dec;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
