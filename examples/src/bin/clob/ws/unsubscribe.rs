@@ -2,7 +2,7 @@
 //!
 //! Run with tracing enabled to see subscribe/unsubscribe messages:
 //! ```
-//! RUST_LOG=debug cargo run --example websocket_unsubscribe --features ws,tracing
+//! RUST_LOG=debug cargo run -p examples-polymarket-client-sdk --bin websocket_unsubscribe
 //! ```
 #![allow(clippy::print_stdout, reason = "Examples are okay to print to stdout")]
 #![allow(clippy::print_stderr, reason = "Examples are okay to print to stderr")]
@@ -16,8 +16,7 @@ use tokio::time::timeout;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    // Initialize tracing subscriber if tracing feature is enabled
-    #[cfg(feature = "tracing")]
+    // Initialize tracing subscriber
     tracing_subscriber::fmt()
         .with_env_filter(
             tracing_subscriber::EnvFilter::from_default_env()
@@ -29,7 +28,7 @@ async fn main() -> anyhow::Result<()> {
     let client = Client::default();
 
     println!("Connected to CLOB WebSocket API");
-    println!("(Run with RUST_LOG=debug and --features tracing to see wire messages)\n");
+    println!("(Run with RUST_LOG=debug to see wire messages)\n");
 
     // Asset IDs to subscribe to
     let asset_ids = vec![

@@ -2,12 +2,12 @@
 //!
 //! Run with tracing enabled:
 //! ```sh
-//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run --example bridge --features bridge,tracing
+//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin bridge
 //! ```
 //!
 //! Optionally log to a file:
 //! ```sh
-//! LOG_FILE=bridge.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run --example bridge --features bridge,tracing
+//! LOG_FILE=bridge.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin bridge
 //! ```
 
 use std::fs::File;

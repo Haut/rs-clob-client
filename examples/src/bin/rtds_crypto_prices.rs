@@ -8,7 +8,7 @@
 //!
 //! Run with tracing enabled:
 //! ```sh
-//! RUST_LOG=info cargo run --example rtds_crypto_prices --features rtds,tracing
+//! RUST_LOG=info cargo run -p examples-polymarket-client-sdk --bin rtds_crypto_prices
 //! ```
 
 use std::time::Duration;

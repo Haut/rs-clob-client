@@ -59,7 +59,7 @@ cargo add polymarket-client-sdk
 
 Then run any of the examples
 ```bash
-cargo run --example unauthenticated
+cargo run -p examples-polymarket-client-sdk --bin unauthenticated
 ```
 
 ## Feature Flags
@@ -122,7 +122,12 @@ This allows you to work with the SDK without managing version compatibility for 
 
 ## Examples
 
-See `examples/` for the complete set. Below are hand-picked examples for common use cases.
+The project is a workspace with a dedicated examples crate. Run examples with:
+```bash
+cargo run -p examples-polymarket-client-sdk --bin <example_name>
+```
+
+See [`examples/src/bin/`](examples/src/bin/) for the complete set. Below are hand-picked examples for common use cases.
 
 ### CLOB Client
 
@@ -380,7 +385,7 @@ Available streams:
 - `subscribe_orders()` - User order updates (authenticated)
 - `subscribe_trades()` - User trade executions (authenticated)
 
-See [`examples/clob/ws/`](examples/clob/ws/) for more WebSocket examples including authenticated user streams.
+See [`examples/src/bin/clob/ws/`](examples/src/bin/clob/ws/) for more WebSocket examples including authenticated user streams.
 
 ### Optional APIs
 
@@ -404,7 +409,7 @@ async fn main() -> anyhow::Result<()> {
 }
 ```
 
-See [`examples/data.rs`](examples/data.rs) for trades, leaderboards, activity, and more.
+See [`examples/src/bin/data.rs`](examples/src/bin/data.rs) for trades, leaderboards, activity, and more.
 
 #### Gamma API
 Market and event discovery. Requires the `gamma` feature.
@@ -430,7 +435,7 @@ async fn main() -> anyhow::Result<()> {
 }
 ```
 
-See [`examples/gamma.rs`](examples/gamma.rs) for tags, series, comments, and sports endpoints.
+See [`examples/src/bin/gamma.rs`](examples/src/bin/gamma.rs) for tags, series, comments, and sports endpoints.
 
 #### Bridge API
 Cross-chain deposits from EVM chains, Solana, and Bitcoin. Requires the `bridge` feature.
@@ -457,7 +462,7 @@ async fn main() -> anyhow::Result<()> {
 }
 ```
 
-See [`examples/bridge.rs`](examples/bridge.rs) for supported assets and minimum deposits.
+See [`examples/src/bin/bridge.rs`](examples/src/bin/bridge.rs) for supported assets and minimum deposits.
 
 ## Additional CLOB Capabilities
 
@@ -471,7 +476,7 @@ Beyond basic order placement, the CLOB client supports:
 - **Balance Management** - Query and refresh balance/allowance caches
 - **Geoblock Detection** - Check if trading is available in your region
 
-See [`examples/clob/authenticated.rs`](examples/clob/authenticated.rs) for comprehensive usage.
+See [`examples/src/bin/clob/authenticated.rs`](examples/src/bin/clob/authenticated.rs) for comprehensive usage.
 
 ## Token Allowances
 
@@ -491,7 +496,7 @@ You need to approve two types of tokens:
 Each needs approval for the exchange contracts to work properly.
 
 ### Setting Allowances
-Use [examples/approvals.rs](examples/approvals.rs) to approve the right contracts. Run once to approve USDC. Then change
+Use [examples/src/bin/approvals.rs](examples/src/bin/approvals.rs) to approve the right contracts. Run once to approve USDC. Then change
 the `TOKEN_TO_APPROVE` and run for each conditional token.
 
 **Pro tip**: You only need to set these once per wallet. After that, you can trade freely.

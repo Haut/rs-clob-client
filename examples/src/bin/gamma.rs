@@ -7,12 +7,12 @@
 //!
 //! Run with tracing enabled:
 //! ```sh
-//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run --example gamma --features gamma,tracing
+//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin gamma
 //! ```
 //!
 //! Optionally log to a file:
 //! ```sh
-//! LOG_FILE=gamma.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run --example gamma --features gamma,tracing
+//! LOG_FILE=gamma.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin gamma
 //! ```
 
 use std::fs::File;

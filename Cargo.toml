@@ -19,6 +19,72 @@ categories = [
 edition = "2024"
 rust-version = "1.88.0" # MSRV
 
+[workspace]
+members = ["examples"]
+
+# https://rust-lang.github.io/rust-clippy/master/index.html?versions=lte%3A88
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+cargo = { level = "warn", priority = -1 }
+
+allow_attributes = "warn"
+allow_attributes_without_reason = "warn"
+assertions_on_result_states = "warn"
+clone_on_ref_ptr = "warn"
+create_dir = "warn"
+dbg_macro = "warn"
+doc_include_without_cfg = "warn"
+empty_enum_variants_with_brackets = "warn"
+empty_structs_with_brackets = "warn"
+exhaustive_enums = "warn"
+exhaustive_structs = "warn"
+exit = "warn"
+filetype_is_file = "warn"
+float_arithmetic = "warn"
+get_unwrap = "warn"
+if_then_some_else_none = "warn"
+impl_trait_in_params = "warn"
+infinite_loop = "warn"
+large_include_file = "warn"
+let_underscore_untyped = "warn"
+map_err_ignore = "warn"
+map_with_unused_argument_over_ranges = "warn"
+missing_assert_message = "warn"
+missing_errors_doc = "allow"
+module_name_repetitions = "warn"
+multiple_crate_versions = "allow"
+multiple_inherent_impl = "warn"
+mutex_atomic = "warn"
+mutex_integer = "warn"
+needless_raw_strings = "warn"
+non_zero_suggestions = "warn"
+pathbuf_init_then_push = "warn"
+print_stderr = "warn"
+print_stdout = "warn"
+pub_without_shorthand = "warn"
+rc_buffer = "warn"
+redundant_test_prefix = "warn"
+redundant_type_annotations = "warn"
+ref_patterns = "warn"
+renamed_function_params = "warn"
+rest_pat_in_fully_bound_structs = "warn"
+return_and_then = "warn"
+same_name_method = "warn"
+self_named_module_files = "warn"
+similar_names = "allow"
+single_char_lifetime_names = "warn"
+str_to_string = "warn"
+string_add = "warn"
+string_slice = "warn"
+todo = "warn"
+too_many_lines = "allow"
+try_err = "warn"
+undocumented_unsafe_blocks = "warn"
+unneeded_field_pattern = "warn"
+unseparated_literal_suffix = "warn"
+unused_trait_names = "warn"
+unwrap_used = "warn"
+
 [features]
 default = []
 data = []
@@ -86,149 +152,6 @@ httpmock = "0.8.2"
 tokio = { version = "1.49.0", features = ["rt-multi-thread", "macros"] }
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 
-[[example]]
-name = "async"
-path = "examples/clob/async.rs"
-
-[[example]]
-name = "authenticated"
-path = "examples/clob/authenticated.rs"
-
-[[example]]
-name = "aws_authenticated"
-path = "examples/clob/aws_authenticated.rs"
-
-[[example]]
-name = "builder_authenticated"
-path = "examples/clob/builder_authenticated.rs"
-
-[[example]]
-name = "heartbeats"
-path = "examples/clob/heartbeats.rs"
-required-features = ["heartbeats", "tracing"]
-
-[[example]]
-name = "streaming"
-path = "examples/clob/streaming.rs"
-
-[[example]]
-name = "unauthenticated"
-path = "examples/clob/unauthenticated.rs"
-
-[[example]]
-name = "approvals"
-path = "examples/approvals.rs"
-required-features = ["tracing"]
-
-[[example]]
-name = "check_approvals"
-path = "examples/check_approvals.rs"
-required-features = ["tracing"]
-
-[[example]]
-name = "data"
-path = "examples/data.rs"
-required-features = ["data"]
-
-[[example]]
-name = "gamma"
-path = "examples/gamma.rs"
-required-features = ["gamma"]
-
-[[example]]
-name = "bridge"
-path = "examples/bridge.rs"
-required-features = ["bridge"]
-
-[[example]]
-name = "websocket_orderbook"
-path = "examples/clob/ws/orderbook.rs"
-required-features = ["ws"]
-
-[[example]]
-name = "websocket_user"
-path = "examples/clob/ws/user.rs"
-required-features = ["ws"]
-
-[[example]]
-name = "rfq_quotes"
-path = "examples/clob/rfq/quotes.rs"
-required-features = ["rfq"]
-
-[[example]]
-name = "rfq_requests"
-path = "examples/clob/rfq/requests.rs"
-required-features = ["rfq"]
-
-[[example]]
-name = "rtds_crypto_prices"
-path = "examples/rtds_crypto_prices.rs"
-required-features = ["rtds"]
-
-[[example]]
-name = "websocket_unsubscribe"
-path = "examples/clob/ws/unsubscribe.rs"
-required-features = ["ws"]
-
-# https://rust-lang.github.io/rust-clippy/master/index.html?versions=lte%3A88
-[lints.clippy]
-pedantic = { level = "warn", priority = -1 }
-cargo = { level = "warn", priority = -1 }
-
-allow_attributes = "warn"
-allow_attributes_without_reason = "warn"
-assertions_on_result_states = "warn"
-clone_on_ref_ptr = "warn"
-create_dir = "warn"
-dbg_macro = "warn"
-doc_include_without_cfg = "warn"
-empty_enum_variants_with_brackets = "warn"
-empty_structs_with_brackets = "warn"
-exhaustive_enums = "warn"
-exhaustive_structs = "warn"
-exit = "warn"
-filetype_is_file = "warn"
-float_arithmetic = "warn"
-get_unwrap = "warn"
-if_then_some_else_none = "warn"
-impl_trait_in_params = "warn"
-infinite_loop = "warn"
-large_include_file = "warn"
-let_underscore_untyped = "warn"
-map_err_ignore = "warn"
-map_with_unused_argument_over_ranges = "warn"
-missing_assert_message = "warn"
-missing_errors_doc = "allow"
-module_name_repetitions = "warn"
-multiple_crate_versions = "allow"
-multiple_inherent_impl = "warn"
-mutex_atomic = "warn"
-mutex_integer = "warn"
-needless_raw_strings = "warn"
-non_zero_suggestions = "warn"
-pathbuf_init_then_push = "warn"
-print_stderr = "warn"
-print_stdout = "warn"
-pub_without_shorthand = "warn"
-rc_buffer = "warn"
-redundant_test_prefix = "warn"
-redundant_type_annotations = "warn"
-ref_patterns = "warn"
-renamed_function_params = "warn"
-rest_pat_in_fully_bound_structs = "warn"
-return_and_then = "warn"
-same_name_method = "warn"
-self_named_module_files = "warn"
-similar_names = "allow"
-single_char_lifetime_names = "warn"
-str_to_string = "warn"
-string_add = "warn"
-string_slice = "warn"
-todo = "warn"
-too_many_lines = "allow"
-try_err = "warn"
-undocumented_unsafe_blocks = "warn"
-unneeded_field_pattern = "warn"
-unseparated_literal_suffix = "warn"
-unused_trait_names = "warn"
-unwrap_used = "warn"
+# Inherit workspace lints
+[lints]
+workspace = true
