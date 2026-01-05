@@ -2005,14 +2005,10 @@ dependencies = [
 name = "examples-polymarket-client-sdk"
 version = "0.0.0"
 dependencies = [
- "alloy",
  "anyhow",
- "aws-config",
- "aws-sdk-kms",
  "futures",
  "futures-util",
  "polymarket-client-sdk",
- "rust_decimal",
  "tokio",
  "tracing",
  "tracing-subscriber",

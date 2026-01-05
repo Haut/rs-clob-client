@@ -3,16 +3,28 @@
 //! These types are commonly used in this SDK and are re-exported here
 //! so users don't need to add these dependencies to their `Cargo.toml`.
 
+/// Fixed-size byte array (e.g., transaction hashes are `FixedBytes<32>`).
+pub use alloy::primitives::FixedBytes;
 /// Ethereum address type and the [`address!`] macro for compile-time address literals.
 /// [`ChainId`] is a type alias for `u64` representing EVM chain IDs.
 /// [`Signature`] represents cryptographic signatures for signed orders.
-pub use alloy::primitives::{Address, ChainId, Signature, address};
+/// [`U256`] is a 256-bit unsigned integer for token amounts and allowances.
+pub use alloy::primitives::{Address, ChainId, Signature, U256, address};
+/// Provider trait for Ethereum node interactions.
+pub use alloy::providers::Provider;
+/// Provider builder for connecting to Ethereum nodes.
+pub use alloy::providers::ProviderBuilder;
+/// Macro for defining Solidity interfaces and generating Rust bindings.
+pub use alloy::sol;
 /// Date and time types for timestamps in API responses and order expiration.
 /// [`TimeDelta`] is useful for calculating expiration times relative to now.
 pub use chrono::{DateTime, NaiveDate, TimeDelta, Utc};
 /// Arbitrary precision decimal type for prices, sizes, and amounts.
 pub use rust_decimal::Decimal;
 /// Macro for creating [`Decimal`] literals at compile time.
+/// Note: Using this macro requires adding `rust_decimal` as a direct dependency
+/// because the macro expands to `rust_decimal::Decimal`.
+/// Alternatively, use `Decimal::new(mantissa, scale)` or `Decimal::from_str()`.
 ///
 /// # Example
 /// ```

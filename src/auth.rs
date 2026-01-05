@@ -2,10 +2,16 @@
 /// The [`Signer`] trait from alloy for signing operations.
 /// Implement this trait or use provided signers like [`LocalSigner`] or AWS KMS signers.
 pub use alloy::signers::Signer;
+/// AWS KMS signer for signing with keys stored in AWS Key Management Service.
+pub use alloy::signers::aws::AwsSigner;
 /// Local wallet signer for signing with a private key.
 /// This is the most common signer implementation.
 pub use alloy::signers::local::LocalSigner;
 use async_trait::async_trait;
+/// AWS configuration for loading credentials and region settings.
+pub use aws_config;
+/// AWS KMS client for cryptographic operations.
+pub use aws_sdk_kms;
 use base64::Engine as _;
 use base64::engine::general_purpose::URL_SAFE;
 use hmac::{Hmac, Mac as _};

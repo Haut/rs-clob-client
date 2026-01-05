@@ -21,25 +21,10 @@ polymarket-client-sdk = { path = "../", features = [
 # Runtime and async
 tokio = { version = "1.48.0", features = ["rt-multi-thread", "macros"] }
 
-# Ethereum/alloy - only for contract examples (approvals) and AWS signer
-# Most alloy types (Signer, LocalSigner, Address, etc.) are re-exported by the SDK
-alloy = { version = "1.2.1", default-features = false, features = [
-    "contract",
-    "providers",
-    "reqwest",
-    "signer-aws",
-] }
-
-# AWS dependencies for KMS signer example
-aws-config = "1.8.12"
-aws-sdk-kms = "1.97.0"
-
 # Error handling and utilities
 anyhow = "1.0.100"
 futures = "0.3.31"
 futures-util = "0.3.31"
-# Required at runtime for dec! macro expansion (references rust_decimal::Decimal)
-rust_decimal = "1.39.0"
 
 # Tracing/logging
 tracing = "0.1"

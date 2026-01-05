@@ -26,10 +26,7 @@
 use std::env;
 use std::fs::File;
 
-use alloy::primitives::U256;
-use alloy::providers::ProviderBuilder;
-use alloy::sol;
-use polymarket_client_sdk::types::{Address, address};
+use polymarket_client_sdk::types::{Address, ProviderBuilder, U256, address, sol};
 use polymarket_client_sdk::{POLYGON, contract_config};
 use tracing::{debug, info};
 use tracing_subscriber::EnvFilter;

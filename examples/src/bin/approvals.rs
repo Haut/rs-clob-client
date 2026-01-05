@@ -36,11 +36,10 @@ use std::env;
 use std::fs::File;
 use std::str::FromStr as _;
 
-use alloy::primitives::U256;
-use alloy::providers::ProviderBuilder;
-use alloy::sol;
 use polymarket_client_sdk::auth::{LocalSigner, Signer as _};
-use polymarket_client_sdk::types::{Address, address};
+use polymarket_client_sdk::types::{
+    Address, FixedBytes, Provider, ProviderBuilder, U256, address, sol,
+};
 use polymarket_client_sdk::{POLYGON, PRIVATE_KEY_VAR, contract_config};
 use tracing::{debug, info};
 use tracing_subscriber::EnvFilter;
@@ -188,7 +187,7 @@ async fn main() -> anyhow::Result<()> {
     Ok(())
 }
 
-async fn check_allowance<P: alloy::providers::Provider>(
+async fn check_allowance<P: Provider>(
     token: &IERC20::IERC20Instance<P>,
     owner: Address,
     spender: Address,
@@ -197,7 +196,7 @@ async fn check_allowance<P: alloy::providers::Provider>(
     Ok(allowance)
 }
 
-async fn check_approval_for_all<P: alloy::providers::Provider>(
+async fn check_approval_for_all<P: Provider>(
     ctf: &IERC1155::IERC1155Instance<P>,
     account: Address,
     operator: Address,
@@ -206,20 +205,20 @@ async fn check_approval_for_all<P: alloy::providers::Provider>(
     Ok(approved)
 }
 
-async fn approve<P: alloy::providers::Provider>(
+async fn approve<P: Provider>(
     usdc: &IERC20::IERC20Instance<P>,
     spender: Address,
     amount: U256,
-) -> anyhow::Result<alloy::primitives::FixedBytes<32>> {
+) -> anyhow::Result<FixedBytes<32>> {
     let tx_hash = usdc.approve(spender, amount).send().await?.watch().await?;
     Ok(tx_hash)
 }
 
-async fn set_approval_for_all<P: alloy::providers::Provider>(
+async fn set_approval_for_all<P: Provider>(
     ctf: &IERC1155::IERC1155Instance<P>,
     operator: Address,
     approved: bool,
-) -> anyhow::Result<alloy::primitives::FixedBytes<32>> {
+) -> anyhow::Result<FixedBytes<32>> {
     let tx_hash = ctf
         .setApprovalForAll(operator, approved)
         .send()
