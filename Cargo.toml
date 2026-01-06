@@ -22,6 +22,9 @@ rust-version = "1.88.0" # MSRV
 [workspace]
 members = ["examples"]
 
+[workspace.dependencies]
+tokio = { version = "1.49.0", features = ["rt-multi-thread", "macros"] }
+
 # https://rust-lang.github.io/rust-clippy/master/index.html?versions=lte%3A88
 [workspace.lints.clippy]
 pedantic = { level = "warn", priority = -1 }

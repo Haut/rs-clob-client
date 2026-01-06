@@ -1,5 +1,5 @@
 [package]
-name = "examples-polymarket-client-sdk"
+name = "polymarket-client-sdk-examples"
 version = "0.0.0"
 edition = "2024"
 rust-version = "1.88.0"
@@ -7,7 +7,6 @@ publish = false
 description = "Examples demonstrating how to use the polymarket-client-sdk library"
 
 [dependencies]
-# The SDK library - using path dependency for development
 polymarket-client-sdk = { path = "../", features = [
     "data",
     "gamma",
@@ -17,91 +16,83 @@ polymarket-client-sdk = { path = "../", features = [
     "ws",
     "rtds",
 ] }
-
-# Runtime and async
-tokio = { version = "1.48.0", features = ["rt-multi-thread", "macros"] }
-
-# Error handling and utilities
+tokio = { workspace = true }
+alloy = { version = "1.2.1", default-features = false, features = ["signer-aws", "signers"] }
+aws-config = "1.8.12"
+aws-sdk-kms = "1.97.0"
 anyhow = "1.0.100"
 futures = "0.3.31"
 futures-util = "0.3.31"
-
-# Tracing/logging
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 
-# CLOB examples
 [[bin]]
 name = "async"
-path = "src/bin/clob/async.rs"
+path = "src/clob/async.rs"
 
 [[bin]]
 name = "authenticated"
-path = "src/bin/clob/authenticated.rs"
+path = "src/clob/authenticated.rs"
 
 [[bin]]
 name = "aws_authenticated"
-path = "src/bin/clob/aws_authenticated.rs"
+path = "src/clob/aws_authenticated.rs"
 
 [[bin]]
 name = "builder_authenticated"
-path = "src/bin/clob/builder_authenticated.rs"
+path = "src/clob/builder_authenticated.rs"
 
 [[bin]]
 name = "streaming"
-path = "src/bin/clob/streaming.rs"
+path = "src/clob/streaming.rs"
 
 [[bin]]
 name = "unauthenticated"
-path = "src/bin/clob/unauthenticated.rs"
+path = "src/clob/unauthenticated.rs"
 
-# WebSocket examples
 [[bin]]
 name = "websocket_orderbook"
-path = "src/bin/clob/ws/orderbook.rs"
+path = "src/clob/ws/orderbook.rs"
 
 [[bin]]
 name = "websocket_user"
-path = "src/bin/clob/ws/user.rs"
+path = "src/clob/ws/user.rs"
 
 [[bin]]
 name = "websocket_unsubscribe"
-path = "src/bin/clob/ws/unsubscribe.rs"
+path = "src/clob/ws/unsubscribe.rs"
 
-# Feature-specific examples
 [[bin]]
 name = "approvals"
-path = "src/bin/approvals.rs"
+path = "src/approvals.rs"
 
 [[bin]]
 name = "check_approvals"
-path = "src/bin/check_approvals.rs"
+path = "src/check_approvals.rs"
 
 [[bin]]
 name = "data"
-path = "src/bin/data.rs"
+path = "src/data.rs"
 
 [[bin]]
 name = "gamma"
-path = "src/bin/gamma.rs"
+path = "src/gamma.rs"
 
 [[bin]]
 name = "bridge"
-path = "src/bin/bridge.rs"
+path = "src/bridge.rs"
 
 [[bin]]
 name = "rtds_crypto_prices"
-path = "src/bin/rtds_crypto_prices.rs"
+path = "src/rtds_crypto_prices.rs"
 
-# RFQ examples
 [[bin]]
 name = "rfq_quotes"
-path = "src/bin/clob/rfq/quotes.rs"
+path = "src/clob/rfq/quotes.rs"
 
 [[bin]]
 name = "rfq_requests"
-path = "src/bin/clob/rfq/requests.rs"
+path = "src/clob/rfq/requests.rs"
 
-# Inherit lints from workspace
 [lints]
 workspace = true

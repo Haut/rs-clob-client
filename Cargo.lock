@@ -2002,19 +2002,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "examples-polymarket-client-sdk"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "futures",
- "futures-util",
- "polymarket-client-sdk",
- "tokio",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
 name = "fastrand"
 version = "2.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3406,6 +3393,22 @@ dependencies = [
  "tracing-subscriber",
  "url",
  "uuid",
+]
+
+[[package]]
+name = "polymarket-client-sdk-examples"
+version = "0.0.0"
+dependencies = [
+ "alloy",
+ "anyhow",
+ "aws-config",
+ "aws-sdk-kms",
+ "futures",
+ "futures-util",
+ "polymarket-client-sdk",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]
