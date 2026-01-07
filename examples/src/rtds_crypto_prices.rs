@@ -6,9 +6,9 @@
 //! 3. Subscribing to comment events
 //! 4. Showing connection state and subscription count
 //!
-//! Run with tracing enabled:
+//! Run:
 //! ```sh
-//! RUST_LOG=info cargo run -p examples-polymarket-client-sdk --bin rtds_crypto_prices
+//! RUST_LOG=info cargo run -p polymarket-client-sdk-examples --bin rtds_crypto_prices
 //! ```
 
 use std::time::Duration;

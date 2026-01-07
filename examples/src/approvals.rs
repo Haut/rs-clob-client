@@ -17,19 +17,19 @@
 //!
 //! You only need to run these approvals once per wallet.
 //!
-//! Run with tracing enabled:
+//! Run:
 //! ```sh
-//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin approvals
+//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p polymarket-client-sdk-examples --bin approvals
 //! ```
 //!
 //! Dry run (no transactions executed):
 //! ```sh
-//! RUST_LOG=info cargo run -p examples-polymarket-client-sdk --bin approvals -- --dry-run
+//! RUST_LOG=info cargo run -p polymarket-client-sdk-examples --bin approvals -- --dry-run
 //! ```
 //!
 //! Optionally log to a file:
 //! ```sh
-//! LOG_FILE=approvals.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin approvals
+//! LOG_FILE=approvals.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p polymarket-client-sdk-examples --bin approvals
 //! ```
 
 use std::env;

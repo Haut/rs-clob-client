@@ -8,19 +8,19 @@
 //! This example queries the blockchain to show which contracts are approved
 //! for a given wallet address. No private key or gas required.
 //!
-//! Run with tracing enabled:
+//! Run:
 //! ```sh
-//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin check_approvals -- <WALLET_ADDRESS>
+//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p polymarket-client-sdk-examples --bin check_approvals -- <WALLET_ADDRESS>
 //! ```
 //!
 //! Optionally log to a file:
 //! ```sh
-//! LOG_FILE=check_approvals.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin check_approvals -- <WALLET_ADDRESS>
+//! LOG_FILE=check_approvals.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p polymarket-client-sdk-examples --bin check_approvals -- <WALLET_ADDRESS>
 //! ```
 //!
 //! Example:
 //! ```sh
-//! RUST_LOG=info cargo run -p examples-polymarket-client-sdk --bin check_approvals -- 0x1234...abcd
+//! RUST_LOG=info cargo run -p polymarket-client-sdk-examples --bin check_approvals -- 0x1234...abcd
 //! ```
 
 use std::env;
@@ -73,10 +73,10 @@ async fn main() -> anyhow::Result<()> {
             "invalid arguments - expected wallet address"
         );
         eprintln!(
-            "Usage: cargo run -p examples-polymarket-client-sdk --bin check_approvals -- <WALLET_ADDRESS>"
+            "Usage: cargo run -p polymarket-client-sdk-examples --bin check_approvals -- <WALLET_ADDRESS>"
         );
         eprintln!(
-            "Example: cargo run -p examples-polymarket-client-sdk --bin check_approvals -- 0x1234567890abcdef1234567890abcdef12345678"
+            "Example: cargo run -p polymarket-client-sdk-examples --bin check_approvals -- 0x1234567890abcdef1234567890abcdef12345678"
         );
         std::process::exit(1);
     }
@@ -142,7 +142,7 @@ async fn main() -> anyhow::Result<()> {
     } else {
         info!(
             status = "incomplete",
-            "some approvals missing - run: cargo run -p examples-polymarket-client-sdk --bin approvals"
+            "some approvals missing - run: cargo run -p polymarket-client-sdk-examples --bin approvals"
         );
     }
 

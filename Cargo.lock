@@ -3406,6 +3406,7 @@ dependencies = [
  "futures",
  "futures-util",
  "polymarket-client-sdk",
+ "rust_decimal",
  "tokio",
  "tracing",
  "tracing-subscriber",

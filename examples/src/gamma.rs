@@ -5,14 +5,14 @@
 //! 2. Extracting real IDs/slugs from responses
 //! 3. Using those IDs for subsequent lookups
 //!
-//! Run with tracing enabled:
+//! Run:
 //! ```sh
-//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin gamma
+//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p polymarket-client-sdk-examples --bin gamma
 //! ```
 //!
 //! Optionally log to a file:
 //! ```sh
-//! LOG_FILE=gamma.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin gamma
+//! LOG_FILE=gamma.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p polymarket-client-sdk-examples --bin gamma
 //! ```
 
 use std::fs::File;

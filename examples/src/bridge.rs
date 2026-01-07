@@ -1,13 +1,13 @@
 //! Bridge API example demonstrating deposit and supported assets endpoints.
 //!
-//! Run with tracing enabled:
+//! Run:
 //! ```sh
-//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin bridge
+//! RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p polymarket-client-sdk-examples --bin bridge
 //! ```
 //!
 //! Optionally log to a file:
 //! ```sh
-//! LOG_FILE=bridge.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p examples-polymarket-client-sdk --bin bridge
+//! LOG_FILE=bridge.log RUST_LOG=info,hyper_util=off,hyper=off,reqwest=off,h2=off,rustls=off cargo run -p polymarket-client-sdk-examples --bin bridge
 //! ```
 
 use std::fs::File;

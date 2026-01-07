@@ -9,7 +9,7 @@ use polymarket_client_sdk::clob::types::request::{
 };
 use polymarket_client_sdk::clob::types::{Amount, OrderType, Side};
 use polymarket_client_sdk::clob::{Client, Config};
-use polymarket_client_sdk::types::{Decimal, TimeDelta, Utc};
+use polymarket_client_sdk::types::{Decimal, TimeDelta, Utc, dec};
 use polymarket_client_sdk::{POLYGON, PRIVATE_KEY_VAR};
 
 #[tokio::main]
@@ -46,7 +46,7 @@ async fn main() -> anyhow::Result<()> {
         .token_id(token_id)
         .order_type(OrderType::GTD)
         .expiration(Utc::now() + TimeDelta::days(2))
-        .price(Decimal::new(5, 1)) // 0.5
+        .price(dec!(0.5))
         .size(Decimal::ONE_HUNDRED)
         .side(Side::Buy)
         .build()

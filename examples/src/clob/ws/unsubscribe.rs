@@ -1,8 +1,8 @@
 //! Example demonstrating WebSocket subscribe/unsubscribe functionality.
 //!
-//! Run with tracing enabled to see subscribe/unsubscribe messages:
+//! Run with tracing to see subscribe/unsubscribe messages:
 //! ```
-//! RUST_LOG=debug cargo run -p examples-polymarket-client-sdk --bin websocket_unsubscribe
+//! RUST_LOG=debug cargo run -p polymarket-client-sdk-examples --bin websocket_unsubscribe
 //! ```
 #![allow(clippy::print_stdout, reason = "Examples are okay to print to stdout")]
 #![allow(clippy::print_stderr, reason = "Examples are okay to print to stderr")]
