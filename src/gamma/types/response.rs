@@ -432,6 +432,7 @@ pub struct Market {
     pub liquidity_clob: Option<Decimal>,
     pub maker_base_fee: Option<i32>,
     pub taker_base_fee: Option<i32>,
+    pub maker_rebates_fee_share_bps: Option<i32>,
     pub custom_liveness: Option<i32>,
     pub accepting_orders: Option<bool>,
     pub notifications_enabled: Option<bool>,
